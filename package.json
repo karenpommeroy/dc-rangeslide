@@ -12,7 +12,9 @@
     "range slider",
     "ticks range input",
     "ticks range slider",
-    "range slider with labels"
+    "range slider with labels",
+    "dc slider",
+    "dc chart"
   ],
   "author": "karenpommeroy <mkarpins@gmail.com>",
   "repository": {

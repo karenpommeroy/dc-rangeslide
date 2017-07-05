@@ -1,26 +1,39 @@
 {
-  "name": "rangeslide.js",
-  "description": "Lightweight customizable range slider with labels (but without jQuery)",
-  "version": "0.10.0",
+  "name": "dc-rangeslide",
+  "description": "Slider chart for use with dc.js",
+  "version": "0.1.2",
   "main": [
-    "dist/js/rangeslide.js",
-    "dist/css/rangeslide.css"
+    "dist/dc-rangeslide.js",
+    "dist/dc-rangeslide.css"
   ],
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "dc": "^2.1.6",
+    "rangeslide.js": "^0.10.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-umd": "^2.4.0"
+  },
   "moduleType": [
     "amd",
+    "umd",
     "globals"
   ],
   "keywords": [
     "slide input",
-	"sliding input",
-	"labels",
-	"range input",
-	"range slider",
-	"ticks range input",
-	"ticks range slider",
-	"range slider with labels"
+    "sliding input",
+    "labels",
+    "range input",
+    "range slider",
+    "ticks range input",
+    "ticks range slider",
+    "range slider with labels",
+    "dc slider",
+    "dc chart"
   ],
   "authors": [
     "karenpommeroy <mkarpins@gmail.com>"
