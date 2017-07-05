@@ -27,14 +27,12 @@ module.exports = function(grunt) {
 		concat: {
 			js: {
 				src: [
-                    "node_modules/rangeslide.js/dist/rangeslide.js",
 					"src/main.js"
 				],
 				dest: "dist/dc-rangeslide.js"
 			},
             css: {
 				src: [
-                    "node_modules/rangeslide.js/dist/rangeslide.css",
 					"src/main.css"
 				],
 				dest: "dist/dc-rangeslide.css"
@@ -47,9 +45,10 @@ module.exports = function(grunt) {
                     dest: "dist/dc-rangeslide.js",
                     deps: {
                         "default": [
-                            { "dc": "dc" }
+                            { "dc": "dc" },
+                            { "rangeslide": "rangeslide" }
                         ],
-						global: ["dc"]
+						global: ["dc", "rangeslide"]
                     }
                 }
             }
