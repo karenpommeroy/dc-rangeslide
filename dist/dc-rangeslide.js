@@ -16,16 +16,6 @@
 
 "use strict";
 
-var data1 = [
-    { name: "2016", item: "This is some sample text associated with first item." },
-    { name: "2017", item: "This is some sample text associated with second item." },
-    { name: "2018", item: "This is some sample text associated with third item. It was returned from a function." },
-    { name: "2019", item: function() { return "This is some sample text associated with fourth item. It was also returned from a function."; } },
-    { name: "2020", item: "This is some sample text associated with fifth item." },
-    { name: "2021", item: "This is some sample text associated with sixth item." },
-    { name: "2022", item: "This is some sample text associated with the last item." }
-];
-
 dc.rangeslide = function (parent, chartGroup) {
     var RANGESLIDE_CLASS = "rangeslide";
     var _chart = dc.baseMixin({}),
@@ -63,29 +53,12 @@ dc.rangeslide = function (parent, chartGroup) {
         _valueIndicatorWidth = 20,
         _valueIndicatorHeight = 15,
         _valuePosition = "above",
-        _valueSource = "name";
+        _valueSource = "key";
     
     _chart._doRender = function () {
         _chart.clear();
-        _chart.anchor().classList.add(RANGESLIDE_CLASS);
-        _rangeslide = rangeslide(_chart.anchor(), {
-            data: data1,
-            showLabels: true,
-            showTicks: true,
-            thumbWidth: 15,
-            thumbHeight: 20,
-            handlers: {
-                "initialized": [],
-                "labelClicked": [],
-                "markerClicked": [],
-                "trackClicked": [],
-                "playStop": [],
-                "playStart": [],
-                "thumbDragStart": [],
-                "thumbDragEnd": [],
-                "valueChanged": []
-            }
-        });
+        _chart.anchor().classList.add(RANGESLIDE_CLASS); 
+        _rangeslide = rangeslide(_chart.anchor(), this.getOptions());
         
         return _chart;
     };
@@ -98,6 +71,7 @@ dc.rangeslide = function (parent, chartGroup) {
         return {
             autoPlay: _autoPlay,
             autoPlayDelay: _autoPlayDelay,
+            data: _chart.data(),
             enableLabelClick: _enableLabelClick,
             enableMarkerClick: _enableMarkerClick,
             enableTrackClick: _enableTrackClick,
