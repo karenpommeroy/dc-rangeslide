@@ -32,6 +32,6 @@
   },
   "dependencies": {
     "dc": "^2.1.6",
-    "rangeslide.js": "^0.10.0"
+    "rangeslide.js": "^0.11.0"
   }
 }
