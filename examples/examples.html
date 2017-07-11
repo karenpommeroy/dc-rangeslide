@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.rangeslide - working with bar chart</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../node_modules/rangeslide.js/dist/rangeslide.css">
+	<link rel="stylesheet" type="text/css" href="../dist/dc-rangeslide.css">
+    <link rel="stylesheet" type="text/css" href="examples.css">
+</head>
+<body>
+	<div id="container1"></div>
+    <p></p>
+    <div id="container2"></div>
+<script type="text/javascript" src="../node_modules/d3/d3.js"></script>
+<script type="text/javascript" src="../node_modules/crossfilter2/crossfilter.js"></script>
+<script type="text/javascript" src="../node_modules/dc/dc.js"></script>
+<script type="text/javascript" src="../node_modules/rangeslide.js/dist/rangeslide.js"></script>
+<script type="text/javascript" src="../dist/dc-rangeslide.js"></script>
+<script type="text/javascript">
+var ndx;
+d3.csv("examples.csv", function(error, experiments) {
+    ndx = crossfilter(experiments);
+    var chartGroup = "group1";
+    var roundDimension = ndx.dimension(function (d) { return +d.Round; }),
+        pointsPerRoundGroup = roundDimension.group(function(d) { return d; })
+            .reduceSum(function(d) { return +d.Points; });
+            
+    var turnDimension = ndx.dimension(function (d) { return +d.Turn; }),
+        pointsPerTurnGroup = turnDimension.group(function(d) { return d; })
+            .reduceSum(function(d) { return +d.Points; });
+
+    var sliderChart = dc.rangeslide(document.querySelector("#container1"), chartGroup);
+    var rowChart = dc.rowChart(document.querySelector("#container2"), chartGroup);
+    
+    sliderChart
+        .dataSource("key")
+        .labelsContent(function(data) {
+            return "Round " + data.key;
+        })
+        .labelsPosition("bottom")
+        .labelsWidth(55)
+        .mouseWheel(true)
+        .showTooltips(true)
+        .showValue(true)
+        .mode("range")
+        .tickHeight(16)
+        .margins({ top: 45, left: 40, bottom: 0, right: 40 })
+        .showTrackMarkers(true)
+        .showTrackMarkersProgress(true)
+        .showTrackProgress(true)
+        .markerSize(10)
+        .valueIndicatorWidth(80)
+        .valueIndicatorHeight(26)
+        .valueIndicatorOffset(18)
+        .valueIndicatorContent(function(data) {
+            return data.value ? data.value + " points" : "-";
+        })
+        .dimension(roundDimension)
+        .group(pointsPerRoundGroup);
+
+    
+    rowChart
+        .dimension(turnDimension)
+        .group(pointsPerTurnGroup)
+        .ordering(function(d) { return -d.Round })
+        .elasticX(true);
+          
+    rowChart.on("renderlet.rowclicker", function(chart, filter) {
+        chart.selectAll(".row rect").on("click.custom", function(d) {
+            chart.dimension().filter(d.key);
+            dc.redrawAll(chartGroup);
+        });
+    });
+    
+    
+    rowChart.render();
+    sliderChart.render();
+  
+  });
+</script>
+</body>
+</html>

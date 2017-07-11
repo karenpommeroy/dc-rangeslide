@@ -1,0 +1,17 @@
+html, body {
+	padding: 25px;
+}
+
+#container1 {
+    width: 600px;
+    height: 100px;
+    background-color: #fbfbfb;
+    border: 1px solid #d8d8d8;
+}
+
+#container2 {
+    width: 600px;
+    height: 600px;
+    background-color: #fbfbfb;
+    border: 1px solid #d8d8d8;
+}
