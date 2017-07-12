@@ -1,6 +1,6 @@
 {
   "name": "dc-rangeslide",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Slider chart for use with dc.js",
   "main": "dist/dc-rangeslide.js",
   "scripts": {},
