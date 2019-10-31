@@ -1,9 +1,12 @@
 {
   "name": "dc-rangeslide",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Slider chart for use with dc.js",
   "main": "dist/dc-rangeslide.js",
-  "scripts": {},
+  "scripts": {
+    "build": "node ./node_modules/grunt/bin/grunt build",
+    "package": "node ./node_modules/grunt/bin/grunt package"
+  },
   "keywords": [
     "slide input",
     "sliding input",
@@ -14,6 +17,7 @@
     "ticks range slider",
     "range slider with labels",
     "dc slider",
+    "dc rangeslide",
     "dc chart"
   ],
   "author": "karenpommeroy <mkarpins@gmail.com>",
@@ -23,12 +27,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-uglify": "^3.0.1",
-    "grunt-umd": "^2.4.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-umd": "^3.0.0",
+    "grunt": "^1.0.4",
     "crossfilter2": "~1.3",
     "d3": "^5"
   },
